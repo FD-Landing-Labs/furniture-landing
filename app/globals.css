@@ -20,6 +20,14 @@
   --accent: #C9B8A3;
   --accent-foreground: #0a0a0a;
 
+  /* Button */
+  --button-primary: #8d493a;
+  --button-primary-hover: #b85842;
+
+  /* Link colors */
+  --link-text-color: #8d493a;
+  --link-hover-color: #b85842;
+
   /* Typography scale */
   --text-display: clamp(2.5rem, 5vw + 1rem, 5rem);
   --text-h1: clamp(2rem, 4vw + 0.5rem, 3.75rem);
