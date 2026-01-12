@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Archivo } from "next/font/google";
 import "./globals.css";
+import { LenisProvider } from "@/components/lenis-provider";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -29,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${archivo.variable} ${inter.variable} antialiased`}
       >
-        {children}
+        <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
   );
