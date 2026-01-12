@@ -53,57 +53,59 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="flex flex-col lg:flex-row justify-center gap-4 pt-4 w-full max-w-4xl mx-auto"
+            className="flex flex-row justify-center items-center gap-[10px] pt-4 w-full"
           >
-            <motion.div
+            <motion.a
+              href="./about"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="w-full"
+              className="inline-flex items-center justify-center px-[26px] py-4 text-base hover:opacity-90 transition-all cursor-pointer"
+              style={{
+                fontFamily: "Archivo, sans-serif",
+                fontWeight: 500,
+                backgroundColor: "rgb(248, 237, 227)",
+                color: "rgb(141, 73, 58)",
+                borderRadius: "5px",
+                border: "none",
+                textDecoration: "none",
+                whiteSpace: "pre",
+                width: "min-content",
+                height: "min-content",
+              }}
             >
-              <button
-                className="w-full px-10 py-4 text-base hover:opacity-90 transition-all"
-                style={{
-                  fontFamily: "Archivo, sans-serif",
-                  fontWeight: 500,
-                  backgroundColor: "rgb(248, 237, 227)",
-                  color: "rgb(141, 73, 58)",
-                  borderRadius: "5px",
-                  border: "none",
-                }}
-              >
-                Our Vision
-              </button>
-            </motion.div>
+              Our Vision
+            </motion.a>
 
-            <motion.div
+            <motion.a
+              href="./#expertise"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="w-full"
+              className="inline-flex items-center justify-center px-[26px] py-4 text-base transition-all cursor-pointer"
+              style={{
+                fontFamily: "Archivo, sans-serif",
+                fontWeight: 500,
+                backgroundColor: "transparent",
+                color: "rgb(248, 237, 227)",
+                borderRadius: "5px",
+                border: "1px solid rgb(248, 237, 227)",
+                textDecoration: "none",
+                whiteSpace: "pre",
+                width: "min-content",
+                height: "min-content",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "rgb(248, 237, 227)"
+                e.currentTarget.style.color = "rgb(141, 73, 58)"
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "transparent"
+                e.currentTarget.style.color = "rgb(248, 237, 227)"
+              }}
             >
-              <button
-                className="w-full px-10 py-4 text-base transition-all group"
-                style={{
-                  fontFamily: "Archivo, sans-serif",
-                  fontWeight: 500,
-                  backgroundColor: "transparent",
-                  color: "rgb(248, 237, 227)",
-                  borderRadius: "5px",
-                  border: "1px solid rgb(248, 237, 227)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "rgb(248, 237, 227)"
-                  e.currentTarget.style.color = "rgb(141, 73, 58)"
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "transparent"
-                  e.currentTarget.style.color = "rgb(248, 237, 227)"
-                }}
-              >
-                Explore Expertise
-              </button>
-            </motion.div>
+              Explore Expertise
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>
