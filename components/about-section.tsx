@@ -6,16 +6,15 @@ import Image from "next/image";
 export function AboutSection() {
   return (
     <section
-      className="relative py-20 md:py-32 lg:py-40 overflow-hidden"
+      className="relative py-12 md:py-20 lg:py-32 xl:py-40 overflow-hidden"
       style={{
         backgroundColor: "rgb(235, 225, 215)"
       }}
     >
       <div
-        className="flex flex-col lg:flex-row items-start justify-center gap-[50px] mx-auto overflow-hidden"
+        className="flex flex-col lg:flex-row items-start justify-center gap-8 md:gap-12 lg:gap-[50px] mx-auto overflow-hidden px-4 md:px-8 lg:px-12"
         style={{
-          maxWidth: "1920px",
-          padding: "0 50px"
+          maxWidth: "1920px"
         }}
       >
         {/* Left Content */}
@@ -24,7 +23,7 @@ export function AboutSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="flex flex-col items-start justify-center gap-[20px] flex-1 overflow-hidden"
+          className="flex flex-col items-start justify-center flex-1 overflow-hidden"
         >
           {/* Eyebrow */}
           <motion.div
@@ -32,20 +31,18 @@ export function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 mb-4 md:mb-5"
           >
             <span
-              className="rounded-full"
+              className="rounded-full w-2 h-2"
               style={{
-                backgroundColor: "rgb(141, 73, 58)",
-                width: "8px",
-                height: "8px"
+                backgroundColor: "rgb(141, 73, 58)"
               }}
             />
             <span
+              className="text-[0.8125rem] md:text-sm"
               style={{
                 fontFamily: "Archivo, sans-serif",
-                fontSize: "14px",
                 fontWeight: 400,
                 color: "rgb(141, 73, 58)"
               }}
@@ -60,11 +57,11 @@ export function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4rem] mb-8 md:mb-10 lg:mb-12"
             style={{
               fontFamily: "Archivo, sans-serif",
               fontWeight: 400,
-              fontSize: "64px",
-              lineHeight: "1em",
+              lineHeight: "1.1em",
               letterSpacing: "-0.03em",
               color: "rgb(141, 73, 58)",
               maxWidth: "550px",
@@ -86,18 +83,17 @@ export function AboutSection() {
             className="flex flex-col"
           >
             <p
+              className="text-[0.9375rem] md:text-base mb-5 md:mb-6 lg:mb-7"
               style={{
                 fontFamily: "Archivo, sans-serif",
-                fontSize: "16px",
                 fontWeight: 400,
-                lineHeight: "1.4em",
+                lineHeight: "1.5em",
                 color: "rgb(141, 73, 58)",
                 maxWidth: "550px",
                 width: "100%",
                 whiteSpace: "pre-wrap",
                 wordBreak: "break-word",
-                wordWrap: "break-word",
-                marginBottom: "20px"
+                wordWrap: "break-word"
               }}
             >
               At Troscán, we believe that every space has a story to tell. As a
@@ -105,18 +101,17 @@ export function AboutSection() {
             </p>
 
             <p
+              className="text-[0.9375rem] md:text-base mb-7 md:mb-8 lg:mb-10"
               style={{
                 fontFamily: "Archivo, sans-serif",
-                fontSize: "16px",
                 fontWeight: 400,
-                lineHeight: "1.4em",
+                lineHeight: "1.5em",
                 color: "rgb(141, 73, 58)",
                 maxWidth: "550px",
                 width: "100%",
                 whiteSpace: "pre-wrap",
                 wordBreak: "break-word",
-                wordWrap: "break-word",
-                marginBottom: "20px"
+                wordWrap: "break-word"
               }}
             >
               Our expert team blends timeless craftsmanship with innovative
@@ -128,15 +123,13 @@ export function AboutSection() {
             {/* CTA Button */}
             <a
               href="./about"
-              className="inline-flex items-center justify-center transition-all cursor-pointer"
+              className="inline-flex items-center justify-center transition-all cursor-pointer text-[0.9375rem] md:text-base px-6 py-3 md:px-7 md:py-4"
               style={{
                 fontFamily: "Archivo, sans-serif",
                 fontWeight: 500,
-                fontSize: "16px",
                 backgroundColor: "rgb(141, 73, 58)",
                 color: "rgb(248, 237, 227)",
                 borderRadius: "5px",
-                padding: "16px 26px",
                 textDecoration: "none",
                 border: "none",
                 width: "fit-content"
@@ -155,31 +148,27 @@ export function AboutSection() {
 
         {/* Right Image */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{
             duration: 0.8,
             ease: [0.25, 0.46, 0.45, 0.94],
             delay: 0.2
           }}
-          className="flex items-center justify-center flex-1 overflow-hidden"
-          style={{
-            borderRadius: "10px"
-          }}
+          className="flex items-center justify-center flex-1 overflow-hidden w-full rounded-lg md:rounded-xl"
         >
           <div
-            className="relative overflow-hidden"
+            className="relative overflow-hidden w-full rounded-lg md:rounded-xl"
             style={{
-              aspectRatio: "1.148936170212766 / 1",
-              width: "100%"
+              aspectRatio: "1.148936170212766 / 1"
             }}
           >
             <Image
               src="/about.jpeg"
               alt="Classical wooden table"
               fill
-              className="object-cover"
+              className="object-cover rounded-lg md:rounded-xl"
               style={{
                 objectPosition: "center center"
               }}
