@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import Image from "next/image"
 import { useRef } from "react"
+import { siteConfig } from "@/config/site-config"
 
 export function CTASection() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -27,8 +28,8 @@ export function CTASection() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/cta.jpeg"
-            alt="Interior design with warm lighting"
+            src={siteConfig.cta.backgroundImage}
+            alt="CTA background"
             fill
             className="object-cover"
             sizes="100vw"
@@ -48,41 +49,41 @@ export function CTASection() {
             <div
               className="px-8 py-12 md:px-12 md:py-16 lg:px-16 lg:py-20 rounded-2xl"
               style={{
-                backgroundColor: "rgb(248, 237, 227)",
+                backgroundColor: siteConfig.colors.cream,
               }}
             >
               {/* CTA Text */}
               <p
                 className="text-lg md:text-xl lg:text-2xl leading-relaxed text-center mb-8"
                 style={{
-                  fontFamily: "Archivo, sans-serif",
+                  fontFamily: siteConfig.fonts.primary,
                   fontWeight: 400,
-                  color: "rgb(141, 73, 58)",
+                  color: siteConfig.colors.primary,
                 }}
               >
-                Ready to reimagine your space? Connect with us at Koala to bring your vision to life with our expertise in design and decoration.
+                {siteConfig.cta.text}
               </p>
 
               {/* CTA Button */}
               <div className="flex justify-center">
                 <a
-                  href="#contact"
+                  href={siteConfig.cta.button.href}
                   className="px-8 py-3.5 text-base font-normal transition-all cursor-pointer inline-flex items-center justify-center"
                   style={{
-                    fontFamily: "Archivo, sans-serif",
-                    backgroundColor: "rgb(141, 73, 58)",
-                    color: "rgb(248, 237, 227)",
+                    fontFamily: siteConfig.fonts.primary,
+                    backgroundColor: siteConfig.colors.primary,
+                    color: siteConfig.colors.cream,
                     borderRadius: "5px",
                     textDecoration: "none",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = "rgb(121, 63, 48)"
+                    e.currentTarget.style.backgroundColor = siteConfig.colors.primaryDark
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "rgb(141, 73, 58)"
+                    e.currentTarget.style.backgroundColor = siteConfig.colors.primary
                   }}
                 >
-                  Get in Touch
+                  {siteConfig.cta.button.label}
                 </a>
               </div>
             </div>

@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { siteConfig } from "@/config/site-config"
 
 export function Footer() {
   return (
@@ -22,12 +23,12 @@ export function Footer() {
           <h2
             className="text-[1.75rem] md:text-[2rem] lg:text-[2.25rem]"
             style={{
-              fontFamily: "Archivo, sans-serif",
+              fontFamily: siteConfig.fonts.primary,
               fontWeight: 400,
-              color: "rgb(248, 237, 227)",
+              color: siteConfig.colors.cream,
             }}
           >
-            Koala
+            {siteConfig.brand.name}
           </h2>
         </motion.div>
 
@@ -44,7 +45,7 @@ export function Footer() {
             <h3
               className="mb-4 md:mb-5 text-[0.9375rem] md:text-base"
               style={{
-                fontFamily: "Archivo, sans-serif",
+                fontFamily: siteConfig.fonts.primary,
                 fontWeight: 400,
                 color: "rgba(248, 237, 227, 0.7)",
               }}
@@ -52,24 +53,24 @@ export function Footer() {
               Sitemap
             </h3>
             <ul className="space-y-2.5 md:space-y-3">
-              {["About", "Projects", "News", "Contact"].map((item) => (
-                <li key={item}>
+              {siteConfig.footer.sitemap.map((item) => (
+                <li key={item.label}>
                   <a
-                    href={`#${item.toLowerCase()}`}
+                    href={item.href}
                     className="transition-colors text-[1.125rem] md:text-[1.25rem]"
                     style={{
-                      fontFamily: "Archivo, sans-serif",
+                      fontFamily: siteConfig.fonts.primary,
                       fontWeight: 400,
-                      color: "rgb(248, 237, 227)",
+                      color: siteConfig.colors.cream,
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = "rgba(248, 237, 227, 0.7)"
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color = "rgb(248, 237, 227)"
+                      e.currentTarget.style.color = siteConfig.colors.cream
                     }}
                   >
-                    {item}
+                    {item.label}
                   </a>
                 </li>
               ))}
@@ -81,7 +82,7 @@ export function Footer() {
             <h3
               className="mb-4 md:mb-5 text-[0.9375rem] md:text-base"
               style={{
-                fontFamily: "Archivo, sans-serif",
+                fontFamily: siteConfig.fonts.primary,
                 fontWeight: 400,
                 color: "rgba(248, 237, 227, 0.7)",
               }}
@@ -89,24 +90,24 @@ export function Footer() {
               Socials
             </h3>
             <ul className="space-y-2.5 md:space-y-3">
-              {["Facebook", "Instagram", "LinkedIn", "Twitter"].map((item) => (
-                <li key={item}>
+              {siteConfig.footer.socials.map((item) => (
+                <li key={item.label}>
                   <a
-                    href="#"
+                    href={item.href}
                     className="transition-colors text-[1.125rem] md:text-[1.25rem]"
                     style={{
-                      fontFamily: "Archivo, sans-serif",
+                      fontFamily: siteConfig.fonts.primary,
                       fontWeight: 400,
-                      color: "rgb(248, 237, 227)",
+                      color: siteConfig.colors.cream,
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = "rgba(248, 237, 227, 0.7)"
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color = "rgb(248, 237, 227)"
+                      e.currentTarget.style.color = siteConfig.colors.cream
                     }}
                   >
-                    {item}
+                    {item.label}
                   </a>
                 </li>
               ))}
@@ -118,7 +119,7 @@ export function Footer() {
             <h3
               className="mb-4 md:mb-5 text-[0.9375rem] md:text-base"
               style={{
-                fontFamily: "Archivo, sans-serif",
+                fontFamily: siteConfig.fonts.primary,
                 fontWeight: 400,
                 color: "rgba(248, 237, 227, 0.7)",
               }}
@@ -126,24 +127,24 @@ export function Footer() {
               More
             </h3>
             <ul className="space-y-2.5 md:space-y-3">
-              {["License", "Grainient", "Inspirux", "Store"].map((item) => (
-                <li key={item}>
+              {siteConfig.footer.more.map((item) => (
+                <li key={item.label}>
                   <a
-                    href="#"
+                    href={item.href}
                     className="transition-colors text-[1.125rem] md:text-[1.25rem]"
                     style={{
-                      fontFamily: "Archivo, sans-serif",
+                      fontFamily: siteConfig.fonts.primary,
                       fontWeight: 400,
-                      color: "rgb(248, 237, 227)",
+                      color: siteConfig.colors.cream,
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = "rgba(248, 237, 227, 0.7)"
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color = "rgb(248, 237, 227)"
+                      e.currentTarget.style.color = siteConfig.colors.cream
                     }}
                   >
-                    {item}
+                    {item.label}
                   </a>
                 </li>
               ))}
@@ -170,12 +171,12 @@ export function Footer() {
           <p
             className="text-[0.8125rem] md:text-[0.875rem]"
             style={{
-              fontFamily: "Archivo, sans-serif",
+              fontFamily: siteConfig.fonts.primary,
               fontWeight: 400,
               color: "rgba(248, 237, 227, 0.8)",
             }}
           >
-            © 2025, All rights reserved
+            {siteConfig.footer.copyright}
           </p>
         </motion.div>
       </div>

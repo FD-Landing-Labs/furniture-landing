@@ -3,6 +3,7 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
+import { siteConfig } from "@/config/site-config";
 
 interface Testimonial {
   id: number;
@@ -12,72 +13,7 @@ interface Testimonial {
   image: string;
 }
 
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    name: "Sarah Mitchell",
-    title: "Homeowner",
-    quote:
-      "Koala completely transformed our living room into a warm, inviting space. Their custom furniture pieces are not only beautiful but incredibly comfortable. We couldn't be happier with the result.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
-  },
-  {
-    id: 2,
-    name: "James Anderson",
-    title: "Boutique Hotel Owner",
-    quote:
-      "The bespoke furniture and room designs Koala created for our hotel have elevated our guest experience tremendously. Every piece tells a story and adds character to our spaces.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
-  },
-  {
-    id: 3,
-    name: "Emily Chen",
-    title: "Interior Designer",
-    quote:
-      "Working with Koala has been a dream. Their attention to detail and understanding of both aesthetics and functionality is exceptional. They bring ideas to life beautifully.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
-  },
-  {
-    id: 4,
-    name: "Michael Roberts",
-    title: "Restaurant Owner",
-    quote:
-      "The dining furniture and ambiance Koala designed for our restaurant has become the talk of the town. Guests specifically mention how comfortable and stylish the space feels.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-  },
-  {
-    id: 5,
-    name: "David Martinez",
-    title: "Property Developer",
-    quote:
-      "Koala furnished multiple luxury apartments for our development. Their timeless designs and quality craftsmanship have significantly enhanced the appeal and value of our properties.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
-  },
-  {
-    id: 6,
-    name: "Rachel Thompson",
-    title: "Homeowner",
-    quote:
-      "From concept to completion, Koala made our bedroom redesign effortless. The custom headboard and wardrobe are stunning pieces that we'll treasure for years to come.",
-    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop",
-  },
-  {
-    id: 7,
-    name: "Thomas Wilson",
-    title: "Office Manager",
-    quote:
-      "Koala transformed our corporate office into a modern, productive workspace. The ergonomic furniture and thoughtful layout have improved both aesthetics and employee satisfaction.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop",
-  },
-  {
-    id: 8,
-    name: "Lisa Patterson",
-    title: "Café Owner",
-    quote:
-      "The cozy, welcoming atmosphere Koala created with their furniture selection has made our café a favorite neighborhood spot. Their design perfectly captures our brand's essence.",
-    image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=400&fit=crop",
-  },
-];
+const testimonials: Testimonial[] = siteConfig.testimonials.items as Testimonial[];
 
 function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; index: number }) {
   const { name, title, quote, image } = testimonial;
@@ -86,7 +22,7 @@ function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; ind
     <div
       className="flex flex-col flex-shrink-0 w-[280px] md:w-[320px] rounded-xl p-6 md:p-8"
       style={{
-        backgroundColor: "rgb(255, 255, 255)",
+        backgroundColor: siteConfig.colors.white,
         border: "none",
         minHeight: "380px",
       }}
@@ -98,7 +34,7 @@ function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; ind
           style={{
             width: "60px",
             height: "60px",
-            borderColor: "rgb(141, 73, 58)",
+            borderColor: siteConfig.colors.primary,
           }}
         >
           <Image
@@ -115,10 +51,10 @@ function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; ind
       <p
         className="text-sm md:text-base mb-6 flex-grow"
         style={{
-          fontFamily: "Archivo, sans-serif",
+          fontFamily: siteConfig.fonts.primary,
           fontWeight: 400,
           lineHeight: "1.6em",
-          color: "rgb(60, 60, 60)",
+          color: siteConfig.colors.textDark,
         }}
       >
         "{quote}"
@@ -129,9 +65,9 @@ function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; ind
         <h4
           className="text-lg md:text-xl mb-1"
           style={{
-            fontFamily: "Archivo, sans-serif",
+            fontFamily: siteConfig.fonts.primary,
             fontWeight: 500,
-            color: "rgb(141, 73, 58)",
+            color: siteConfig.colors.primary,
           }}
         >
           {name}
@@ -139,7 +75,7 @@ function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; ind
         <p
           className="text-sm"
           style={{
-            fontFamily: "Archivo, sans-serif",
+            fontFamily: siteConfig.fonts.primary,
             fontWeight: 400,
             color: "rgb(120, 120, 120)",
           }}
@@ -199,7 +135,7 @@ export function TestimonialsSection() {
     <section
       className="relative py-16 md:py-20 lg:py-24 xl:py-28"
       style={{
-        backgroundColor: "rgb(235, 225, 215)",
+        backgroundColor: siteConfig.colors.background,
       }}
     >
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -216,18 +152,18 @@ export function TestimonialsSection() {
             <span
               className="rounded-full w-2 h-2"
               style={{
-                backgroundColor: "rgb(141, 73, 58)",
+                backgroundColor: siteConfig.colors.primary,
               }}
             />
             <span
               className="text-[0.8125rem] md:text-sm"
               style={{
-                fontFamily: "Archivo, sans-serif",
+                fontFamily: siteConfig.fonts.primary,
                 fontWeight: 400,
-                color: "rgb(141, 73, 58)",
+                color: siteConfig.colors.primary,
               }}
             >
-              Testimonials
+              {siteConfig.testimonials.eyebrow}
             </span>
           </div>
 
@@ -236,15 +172,18 @@ export function TestimonialsSection() {
             <h2
               className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] max-w-4xl"
               style={{
-                fontFamily: "Archivo, sans-serif",
+                fontFamily: siteConfig.fonts.primary,
                 fontWeight: 400,
                 lineHeight: "1.2em",
-                color: "rgb(141, 73, 58)",
+                color: siteConfig.colors.primary,
               }}
             >
-              Don't take our word for it!
-              <br />
-              Hear it from our partners.
+              {siteConfig.testimonials.title.split('\n').map((line, i) => (
+                <span key={i}>
+                  {line}
+                  {i < siteConfig.testimonials.title.split('\n').length - 1 && <br />}
+                </span>
+              ))}
             </h2>
 
             {/* Navigation Buttons */}
@@ -254,17 +193,17 @@ export function TestimonialsSection() {
                 className="flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300"
                 style={{
                   backgroundColor: "transparent",
-                  border: "1px solid rgb(141, 73, 58)",
+                  border: `1px solid ${siteConfig.colors.primary}`,
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "rgb(255, 255, 255)";
+                  e.currentTarget.style.backgroundColor = siteConfig.colors.white;
                   const svg = e.currentTarget.querySelector("svg");
-                  if (svg) svg.setAttribute("stroke", "rgb(141, 73, 58)");
+                  if (svg) svg.setAttribute("stroke", siteConfig.colors.primary);
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
                   const svg = e.currentTarget.querySelector("svg");
-                  if (svg) svg.setAttribute("stroke", "rgb(141, 73, 58)");
+                  if (svg) svg.setAttribute("stroke", siteConfig.colors.primary);
                 }}
                 aria-label="Previous testimonials"
               >
@@ -273,7 +212,7 @@ export function TestimonialsSection() {
                   height="20"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="rgb(141, 73, 58)"
+                  stroke={siteConfig.colors.primary}
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -288,17 +227,17 @@ export function TestimonialsSection() {
                 className="flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300"
                 style={{
                   backgroundColor: "transparent",
-                  border: "1px solid rgb(141, 73, 58)",
+                  border: `1px solid ${siteConfig.colors.primary}`,
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "rgb(255, 255, 255)";
+                  e.currentTarget.style.backgroundColor = siteConfig.colors.white;
                   const svg = e.currentTarget.querySelector("svg");
-                  if (svg) svg.setAttribute("stroke", "rgb(141, 73, 58)");
+                  if (svg) svg.setAttribute("stroke", siteConfig.colors.primary);
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
                   const svg = e.currentTarget.querySelector("svg");
-                  if (svg) svg.setAttribute("stroke", "rgb(141, 73, 58)");
+                  if (svg) svg.setAttribute("stroke", siteConfig.colors.primary);
                 }}
                 aria-label="Next testimonials"
               >
@@ -307,7 +246,7 @@ export function TestimonialsSection() {
                   height="20"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="rgb(141, 73, 58)"
+                  stroke={siteConfig.colors.primary}
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { siteConfig } from "@/config/site-config";
 
 export function AboutSection() {
   return (
@@ -36,18 +37,18 @@ export function AboutSection() {
             <span
               className="rounded-full w-2 h-2"
               style={{
-                backgroundColor: "rgb(141, 73, 58)"
+                backgroundColor: siteConfig.colors.primary
               }}
             />
             <span
               className="text-[0.8125rem] md:text-sm"
               style={{
-                fontFamily: "Archivo, sans-serif",
+                fontFamily: siteConfig.fonts.primary,
                 fontWeight: 400,
-                color: "rgb(141, 73, 58)"
+                color: siteConfig.colors.primary
               }}
             >
-              About us
+              {siteConfig.about.eyebrow}
             </span>
           </motion.div>
 
@@ -59,11 +60,11 @@ export function AboutSection() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4rem] mb-8 md:mb-10 lg:mb-12"
             style={{
-              fontFamily: "Archivo, sans-serif",
+              fontFamily: siteConfig.fonts.primary,
               fontWeight: 400,
               lineHeight: "1.1em",
               letterSpacing: "-0.03em",
-              color: "rgb(141, 73, 58)",
+              color: siteConfig.colors.primary,
               maxWidth: "550px",
               width: "100%",
               whiteSpace: "pre-wrap",
@@ -71,7 +72,7 @@ export function AboutSection() {
               wordWrap: "break-word"
             }}
           >
-            Where Spaces Inspire, and Design Comes Alive
+            {siteConfig.about.title}
           </motion.h2>
 
           {/* Text Container - wraps paragraphs and button */}
@@ -82,66 +83,52 @@ export function AboutSection() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="flex flex-col"
           >
-            <p
-              className="text-[0.9375rem] md:text-base mb-5 md:mb-6 lg:mb-7"
-              style={{
-                fontFamily: "Archivo, sans-serif",
-                fontWeight: 400,
-                lineHeight: "1.5em",
-                color: "rgb(141, 73, 58)",
-                maxWidth: "550px",
-                width: "100%",
-                whiteSpace: "pre-wrap",
-                wordBreak: "break-word",
-                wordWrap: "break-word"
-              }}
-            >
-              At Koala, we believe that every space has a story to tell. As a
-              premier furniture design and room decorating agency.
-            </p>
-
-            <p
-              className="text-[0.9375rem] md:text-base mb-7 md:mb-8 lg:mb-10"
-              style={{
-                fontFamily: "Archivo, sans-serif",
-                fontWeight: 400,
-                lineHeight: "1.5em",
-                color: "rgb(141, 73, 58)",
-                maxWidth: "550px",
-                width: "100%",
-                whiteSpace: "pre-wrap",
-                wordBreak: "break-word",
-                wordWrap: "break-word"
-              }}
-            >
-              Our expert team blends timeless craftsmanship with innovative
-              designs, ensuring each piece and layout reflects your unique taste
-              and lifestyle. Whether you're looking to reimagine your living
-              room.
-            </p>
+            {siteConfig.about.paragraphs.map((paragraph, index) => (
+              <p
+                key={index}
+                className={`text-[0.9375rem] md:text-base ${
+                  index === siteConfig.about.paragraphs.length - 1
+                    ? 'mb-7 md:mb-8 lg:mb-10'
+                    : 'mb-5 md:mb-6 lg:mb-7'
+                }`}
+                style={{
+                  fontFamily: siteConfig.fonts.primary,
+                  fontWeight: 400,
+                  lineHeight: "1.5em",
+                  color: siteConfig.colors.primary,
+                  maxWidth: "550px",
+                  width: "100%",
+                  whiteSpace: "pre-wrap",
+                  wordBreak: "break-word",
+                  wordWrap: "break-word"
+                }}
+              >
+                {paragraph}
+              </p>
+            ))}
 
             {/* CTA Button */}
             <a
-              href="#about"
+              href={siteConfig.about.button.href}
               className="inline-flex items-center justify-center transition-all cursor-pointer text-[0.9375rem] md:text-base px-6 py-3 md:px-7 md:py-4"
               style={{
-                fontFamily: "Archivo, sans-serif",
+                fontFamily: siteConfig.fonts.primary,
                 fontWeight: 500,
-                backgroundColor: "rgb(141, 73, 58)",
-                color: "rgb(248, 237, 227)",
+                backgroundColor: siteConfig.colors.primary,
+                color: siteConfig.colors.cream,
                 borderRadius: "5px",
                 textDecoration: "none",
                 border: "none",
                 width: "fit-content"
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "rgb(121, 63, 48)";
+                e.currentTarget.style.backgroundColor = siteConfig.colors.primaryDark;
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "rgb(141, 73, 58)";
+                e.currentTarget.style.backgroundColor = siteConfig.colors.primary;
               }}
             >
-              More About us
+              {siteConfig.about.button.label}
             </a>
           </motion.div>
         </motion.div>
@@ -165,8 +152,8 @@ export function AboutSection() {
             }}
           >
             <Image
-              src="/about.jpeg"
-              alt="Classical wooden table"
+              src={siteConfig.about.image.src}
+              alt={siteConfig.about.image.alt}
               fill
               className="object-cover rounded-lg md:rounded-xl"
               style={{

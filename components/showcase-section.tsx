@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
+import { siteConfig } from "@/config/site-config";
 
 interface ShowcaseCard {
   id: number;
@@ -255,7 +256,7 @@ export function ShowcaseSection() {
       ref={containerRef}
       className="relative"
       style={{
-        backgroundColor: "rgb(235, 225, 215)",
+        backgroundColor: siteConfig.colors.background,
         height: isMobile ? "200vh" : "200vh"
       }}
     >
@@ -283,13 +284,12 @@ export function ShowcaseSection() {
               <h2
                 className="text-[1.75rem] leading-[1.4] sm:text-3xl md:text-4xl lg:text-5xl md:leading-[1.3]"
                 style={{
-                  fontFamily: "Archivo, sans-serif",
+                  fontFamily: siteConfig.fonts.primary,
                   fontWeight: 400,
-                  color: "rgb(141, 73, 58)"
+                  color: siteConfig.colors.primary
                 }}
               >
-                Transforming spaces with style, through Koala's exquisite
-                design expertise.
+                {siteConfig.showcase.description}
               </h2>
             </div>
           </motion.div>

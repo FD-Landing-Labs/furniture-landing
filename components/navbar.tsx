@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { siteConfig } from "@/config/site-config";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -47,42 +48,42 @@ export function Navbar() {
             <span
               className="text-lg font-medium tracking-tight"
               style={{
-                fontFamily: "Archivo, sans-serif",
-                color: "rgb(141, 73, 58)"
+                fontFamily: siteConfig.fonts.primary,
+                color: siteConfig.colors.primary
               }}
             >
-              Koala
+              {siteConfig.brand.name}
             </span>
           </Link>
 
           {/* Navigation Links - Desktop (Absolutely Centered) */}
           <ul className="hidden md:flex items-center gap-[30px] absolute left-[48%] top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] list-none m-0 p-0">
-            {["About", "Projects", "News"].map((item, index) => (
+            {siteConfig.navigation.links.map((item, index) => (
               <motion.li
-                key={item}
+                key={item.label}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + index * 0.1, duration: 0.5 }}
               >
                 <a
-                  href={`#${item.toLowerCase()}`}
+                  href={item.href}
                   className="text-base no-underline outline-none"
                   style={{
-                    fontFamily: "Archivo, sans-serif",
+                    fontFamily: siteConfig.fonts.primary,
                     fontWeight: 600,
                     lineHeight: "1em",
-                    color: "var(--link-text-color, #8d493a)",
+                    color: siteConfig.colors.primary,
                     textDecoration: "none",
                     transition: "color 0.4s cubic-bezier(0.44, 0, 0.56, 1)"
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "var(--link-hover-color, #b85842)";
+                    e.currentTarget.style.color = siteConfig.colors.primaryDark;
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "var(--link-text-color, #8d493a)";
+                    e.currentTarget.style.color = siteConfig.colors.primary;
                   }}
                 >
-                  {item}
+                  {item.label}
                 </a>
               </motion.li>
             ))}
@@ -96,27 +97,27 @@ export function Navbar() {
             className="hidden md:block relative flex-none"
           >
             <a
-              href="#contact"
+              href={siteConfig.navigation.contactButton.href}
               className="flex flex-col items-center justify-center cursor-pointer overflow-hidden text-base no-underline outline-none transition-all"
               style={{
-                fontFamily: "Archivo, sans-serif",
+                fontFamily: siteConfig.fonts.primary,
                 fontWeight: 600,
                 lineHeight: "1em",
                 padding: "10px 20px",
-                backgroundColor: "rgb(141, 73, 58)",
-                color: "rgb(248, 237, 227)",
+                backgroundColor: siteConfig.colors.primary,
+                color: siteConfig.colors.cream,
                 borderRadius: "5px",
                 border: "none",
                 willChange: "transform"
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "rgb(121, 63, 48)";
+                e.currentTarget.style.backgroundColor = siteConfig.colors.primaryDark;
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "rgb(141, 73, 58)";
+                e.currentTarget.style.backgroundColor = siteConfig.colors.primary;
               }}
             >
-              Contact us
+              {siteConfig.navigation.contactButton.label}
             </a>
           </motion.div>
 
@@ -173,25 +174,25 @@ export function Navbar() {
             >
               {/* Menu Items */}
               <div className="flex flex-col px-6 py-4 gap-4">
-                {["About", "Projects", "News"].map((item, index) => (
+                {siteConfig.navigation.links.map((item, index) => (
                   <motion.div
-                    key={item}
+                    key={item.label}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.1 + index * 0.05, duration: 0.3 }}
                   >
                     <a
-                      href={`#${item.toLowerCase()}`}
+                      href={item.href}
                       className="flex items-center justify-center text-base no-underline outline-none transition-colors"
                       style={{
-                        fontFamily: "Archivo, sans-serif",
+                        fontFamily: siteConfig.fonts.primary,
                         fontWeight: 600,
-                        color: "rgb(141, 73, 58)",
+                        color: siteConfig.colors.primary,
                         textDecoration: "none"
                       }}
                       onClick={toggleMobileMenu}
                     >
-                      {item}
+                      {item.label}
                     </a>
                   </motion.div>
                 ))}
@@ -204,21 +205,21 @@ export function Navbar() {
                   className="pt-2 w-full flex justify-center"
                 >
                   <a
-                    href="#contact"
+                    href={siteConfig.navigation.contactButton.href}
                     className="flex items-center justify-center cursor-pointer text-base no-underline outline-none transition-all"
                     style={{
-                      fontFamily: "Archivo, sans-serif",
+                      fontFamily: siteConfig.fonts.primary,
                       fontWeight: 600,
                       lineHeight: "1em",
                       padding: "10px 20px",
-                      backgroundColor: "rgb(141, 73, 58)",
-                      color: "rgb(248, 237, 227)",
+                      backgroundColor: siteConfig.colors.primary,
+                      color: siteConfig.colors.cream,
                       borderRadius: "5px",
                       border: "none"
                     }}
                     onClick={toggleMobileMenu}
                   >
-                    Contact us
+                    {siteConfig.navigation.contactButton.label}
                   </a>
                 </motion.div>
               </div>

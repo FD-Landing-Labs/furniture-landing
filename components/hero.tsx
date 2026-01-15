@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { siteConfig } from "@/config/site-config";
 
 export function Hero() {
   return (
@@ -10,8 +11,8 @@ export function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero-image.png"
-          alt="Luxury interior with curved chair and arched alcove"
+          src={siteConfig.hero.backgroundImage}
+          alt="Hero background"
           fill
           priority
           quality={100}
@@ -41,15 +42,19 @@ export function Hero() {
             }}
             className="text-white text-5xl lg:text-7xl xl:text-8xl"
             style={{
-              fontFamily: "Archivo, sans-serif",
+              fontFamily: siteConfig.fonts.primary,
               fontStyle: "normal",
               fontWeight: 400,
               lineHeight: "1em",
-              color: "rgb(255, 255, 255)"
+              color: siteConfig.colors.white
             }}
           >
-            Timeless Comfort &<br />
-            Endless Luxury
+            {siteConfig.hero.title.split('\n').map((line, i) => (
+              <span key={i}>
+                {line}
+                {i < siteConfig.hero.title.split('\n').length - 1 && <br />}
+              </span>
+            ))}
           </motion.h1>
 
           {/* CTA Buttons */}
@@ -63,61 +68,45 @@ export function Hero() {
             }}
             className="flex flex-col md:flex-row justify-center items-center gap-[10px] pt-4 w-full max-w-md mx-auto"
           >
-            <motion.a
-              href="#about"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.5,
-                duration: 0.8,
-                ease: [0.25, 0.46, 0.45, 0.94]
-              }}
-              className="inline-flex items-center justify-center px-[26px] py-3 text-base hover:opacity-90 transition-all cursor-pointer w-full md:w-auto"
-              style={{
-                fontFamily: "Archivo, sans-serif",
-                fontWeight: 500,
-                backgroundColor: "rgb(248, 237, 227)",
-                color: "rgb(141, 73, 58)",
-                borderRadius: "5px",
-                border: "none",
-                textDecoration: "none"
-              }}
-            >
-              Our Vision
-            </motion.a>
-
-            <motion.a
-              href="#projects"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.6,
-                duration: 0.8,
-                ease: [0.25, 0.46, 0.45, 0.94]
-              }}
-              className="inline-flex items-center justify-center px-[26px] py-3 text-base transition-all cursor-pointer w-full md:w-auto"
-              style={{
-                fontFamily: "Archivo, sans-serif",
-                fontWeight: 500,
-                backgroundColor: "transparent",
-                color: "rgb(248, 237, 227)",
-                borderRadius: "5px",
-                border: "1px solid rgb(248, 237, 227)",
-                textDecoration: "none"
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "rgb(248, 237, 227)";
-                e.currentTarget.style.color = "rgb(141, 73, 58)";
-                e.currentTarget.style.borderColor = "rgb(248, 237, 227)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "transparent";
-                e.currentTarget.style.color = "rgb(248, 237, 227)";
-                e.currentTarget.style.borderColor = "rgb(248, 237, 227)";
-              }}
-            >
-              Explore Expertise
-            </motion.a>
+            {siteConfig.hero.buttons.map((button, index) => (
+              <motion.a
+                key={index}
+                href={button.href}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.5 + index * 0.1,
+                  duration: 0.8,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
+                className="inline-flex items-center justify-center px-[26px] py-3 text-base transition-all cursor-pointer w-full md:w-auto"
+                style={{
+                  fontFamily: siteConfig.fonts.primary,
+                  fontWeight: 500,
+                  backgroundColor: button.variant === 'primary' ? siteConfig.colors.cream : "transparent",
+                  color: button.variant === 'primary' ? siteConfig.colors.primary : siteConfig.colors.cream,
+                  borderRadius: "5px",
+                  border: button.variant === 'primary' ? "none" : `1px solid ${siteConfig.colors.cream}`,
+                  textDecoration: "none"
+                }}
+                onMouseEnter={(e) => {
+                  if (button.variant === 'outline') {
+                    e.currentTarget.style.backgroundColor = siteConfig.colors.cream;
+                    e.currentTarget.style.color = siteConfig.colors.primary;
+                    e.currentTarget.style.borderColor = siteConfig.colors.cream;
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (button.variant === 'outline') {
+                    e.currentTarget.style.backgroundColor = "transparent";
+                    e.currentTarget.style.color = siteConfig.colors.cream;
+                    e.currentTarget.style.borderColor = siteConfig.colors.cream;
+                  }
+                }}
+              >
+                {button.label}
+              </motion.a>
+            ))}
           </motion.div>
         </motion.div>
       </div>
