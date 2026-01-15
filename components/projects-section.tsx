@@ -42,7 +42,7 @@ export function ProjectsSection() {
     >
       {projects.map((project, index) => {
         const targetScale = 1 - ((projects.length - index) * 0.05)
-        const range = [index / projects.length, (index + 1) / projects.length]
+        const range: [number, number] = [index / projects.length, (index + 1) / projects.length]
 
         return (
           <ProjectCard
