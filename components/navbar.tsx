@@ -64,8 +64,8 @@ export function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + index * 0.1, duration: 0.5 }}
               >
-                <Link
-                  href={`/${item.toLowerCase()}`}
+                <a
+                  href={`#${item.toLowerCase()}`}
                   className="text-base no-underline outline-none"
                   style={{
                     fontFamily: "Archivo, sans-serif",
@@ -83,7 +83,7 @@ export function Navbar() {
                   }}
                 >
                   {item}
-                </Link>
+                </a>
               </motion.li>
             ))}
           </ul>
@@ -95,8 +95,8 @@ export function Navbar() {
             transition={{ delay: 0.4, duration: 0.5 }}
             className="hidden md:block relative flex-none"
           >
-            <Link
-              href="/contact"
+            <a
+              href="#contact"
               className="flex flex-col items-center justify-center cursor-pointer overflow-hidden text-base no-underline outline-none transition-all"
               style={{
                 fontFamily: "Archivo, sans-serif",
@@ -117,7 +117,7 @@ export function Navbar() {
               }}
             >
               Contact us
-            </Link>
+            </a>
           </motion.div>
 
           {/* Mobile Menu Button */}
@@ -180,8 +180,8 @@ export function Navbar() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.1 + index * 0.05, duration: 0.3 }}
                   >
-                    <Link
-                      href={`/${item.toLowerCase()}`}
+                    <a
+                      href={`#${item.toLowerCase()}`}
                       className="flex items-center justify-center text-base no-underline outline-none transition-colors"
                       style={{
                         fontFamily: "Archivo, sans-serif",
@@ -192,7 +192,7 @@ export function Navbar() {
                       onClick={toggleMobileMenu}
                     >
                       {item}
-                    </Link>
+                    </a>
                   </motion.div>
                 ))}
 
@@ -203,8 +203,8 @@ export function Navbar() {
                   transition={{ delay: 0.25, duration: 0.3 }}
                   className="pt-2 w-full flex justify-center"
                 >
-                  <Link
-                    href="/contact"
+                  <a
+                    href="#contact"
                     className="flex items-center justify-center cursor-pointer text-base no-underline outline-none transition-all"
                     style={{
                       fontFamily: "Archivo, sans-serif",
@@ -219,7 +219,7 @@ export function Navbar() {
                     onClick={toggleMobileMenu}
                   >
                     Contact us
-                  </Link>
+                  </a>
                 </motion.div>
               </div>
             </motion.div>

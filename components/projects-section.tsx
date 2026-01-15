@@ -154,13 +154,15 @@ function ProjectCard({ project, index, range, targetScale, progress }: ProjectCa
               transition={{ delay: 0.4, duration: 0.6 }}
               className="pt-4"
             >
-              <button
-                className="px-8 py-3.5 text-base font-normal transition-all"
+              <a
+                href="#contact"
+                className="px-8 py-3.5 text-base font-normal transition-all cursor-pointer inline-flex items-center justify-center"
                 style={{
                   fontFamily: "Archivo, sans-serif",
                   backgroundColor: "rgb(248, 237, 227)",
                   color: "rgb(141, 73, 58)",
                   borderRadius: "5px",
+                  textDecoration: "none",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = "rgb(238, 227, 217)"
@@ -170,7 +172,7 @@ function ProjectCard({ project, index, range, targetScale, progress }: ProjectCa
                 }}
               >
                 View Project
-              </button>
+              </a>
             </motion.div>
           </motion.div>
         </div>

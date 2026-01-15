@@ -122,7 +122,7 @@ export function AboutSection() {
 
             {/* CTA Button */}
             <a
-              href="./about"
+              href="#about"
               className="inline-flex items-center justify-center transition-all cursor-pointer text-[0.9375rem] md:text-base px-6 py-3 md:px-7 md:py-4"
               style={{
                 fontFamily: "Archivo, sans-serif",

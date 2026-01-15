@@ -65,13 +65,15 @@ export function CTASection() {
 
               {/* CTA Button */}
               <div className="flex justify-center">
-                <button
-                  className="px-8 py-3.5 text-base font-normal transition-all"
+                <a
+                  href="#contact"
+                  className="px-8 py-3.5 text-base font-normal transition-all cursor-pointer inline-flex items-center justify-center"
                   style={{
                     fontFamily: "Archivo, sans-serif",
                     backgroundColor: "rgb(141, 73, 58)",
                     color: "rgb(248, 237, 227)",
                     borderRadius: "5px",
+                    textDecoration: "none",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = "rgb(121, 63, 48)"
@@ -81,7 +83,7 @@ export function CTASection() {
                   }}
                 >
                   Get in Touch
-                </button>
+                </a>
               </div>
             </div>
           </motion.div>

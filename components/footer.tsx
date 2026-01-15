@@ -55,7 +55,7 @@ export function Footer() {
               {["About", "Projects", "News", "Contact"].map((item) => (
                 <li key={item}>
                   <a
-                    href="#"
+                    href={`#${item.toLowerCase()}`}
                     className="transition-colors text-[1.125rem] md:text-[1.25rem]"
                     style={{
                       fontFamily: "Archivo, sans-serif",

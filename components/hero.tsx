@@ -64,7 +64,7 @@ export function Hero() {
             className="flex flex-col md:flex-row justify-center items-center gap-[10px] pt-4 w-full max-w-md mx-auto"
           >
             <motion.a
-              href="./about"
+              href="#about"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -87,7 +87,7 @@ export function Hero() {
             </motion.a>
 
             <motion.a
-              href="./#expertise"
+              href="#projects"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
