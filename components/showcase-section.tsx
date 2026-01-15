@@ -24,102 +24,105 @@ interface ShowcaseCard {
 }
 
 // Cards configuration - start clustered, spread outward on scroll
+// Image dimensions based on actual aspect ratios from HTML:
+// 1. 960x1200 (portrait 0.8), 2. 1200x1200 (square), 3. 1200x673 (landscape 1.78)
+// 4. 1200x673 (landscape 1.78), 5. 904x1200 (portrait 0.75), 6. 1200x1200 (square)
 const showcaseCards: ShowcaseCard[] = [
   {
     id: 1,
-    src: "/showcase1.jpeg",
-    alt: "Modern dark interior",
-    startX: -60,
-    startY: -30,
-    endX: -450,
-    endY: -200,
-    startRotate: -3,
-    endRotate: -5,
-    startScale: 0.92,
+    src: "/showcase6.jpeg",
+    alt: "Dark Modern furniture",
+    startX: -80,
+    startY: -40,
+    endX: -620,
+    endY: -220,
+    startRotate: 0,
+    endRotate: 0,
+    startScale: 0.9,
     endScale: 1,
-    width: 320,
-    height: 400,
+    width: 300,
+    height: 375, // Portrait aspect ratio 960x1200
     zIndex: 3
   },
   {
     id: 2,
-    src: "/showcase2.jpeg",
-    alt: "Minimalist light space",
+    src: "/showcase5.jpeg",
+    alt: "Minimal luxury sofa",
     startX: 0,
-    startY: -70,
+    startY: -80,
     endX: 0,
-    endY: -280,
-    startRotate: 2,
-    endRotate: 3,
-    startScale: 0.88,
-    endScale: 0.98,
-    width: 380,
-    height: 220,
-    zIndex: 1
+    endY: -240,
+    startRotate: 0,
+    endRotate: 0,
+    startScale: 0.85,
+    endScale: 0.95,
+    width: 290,
+    height: 290, // Square aspect ratio 1200x1200
+    zIndex: 2
   },
   {
     id: 3,
-    src: "/showcase3.jpeg",
-    alt: "Contemporary living area",
-    startX: 70,
-    startY: -25,
-    endX: 450,
-    endY: -200,
-    startRotate: 3,
-    endRotate: 5,
-    startScale: 0.92,
+    src: "/showcase4.jpeg",
+    alt: "Lounge interior",
+    startX: 80,
+    startY: -30,
+    endX: 650,
+    endY: -220,
+    startRotate: 0,
+    endRotate: 0,
+    startScale: 0.9,
     endScale: 1,
-    width: 420,
-    height: 260,
-    zIndex: 3
+    width: 380,
+    height: 213, // Landscape aspect ratio 1200x673
+    zIndex: 4
   },
   {
     id: 4,
-    src: "/showcase4.jpeg",
-    alt: "Abstract art seating",
-    startX: -80,
-    startY: 50,
-    endX: -520,
-    endY: 150,
-    startRotate: -2,
-    endRotate: -3,
-    startScale: 0.88,
-    endScale: 0.95,
+    src: "/showcase3.jpeg",
+    alt: "Lounge interior",
+    startX: -90,
+    startY: 60,
+    endX: -550,
+    endY: 260,
+    startRotate: 0,
+    endRotate: 0,
+    startScale: 0.85,
+    endScale: 0.92,
     width: 300,
-    height: 280,
+    height: 168, // Landscape aspect ratio 1200x673
     zIndex: 2
   },
   {
     id: 5,
-    src: "/showcase5.jpeg",
-    alt: "Elegant dining setup",
+    src: "/showcase2.jpeg",
+    alt: "Luxury dark furniture",
     startX: 0,
     startY: 0,
     endX: 0,
-    endY: 0,
+    endY: 280,
     startRotate: 0,
-    endRotate: 0,
+    endRotate: 1,
     startScale: 1,
     endScale: 1.05,
-    width: 340,
-    height: 220,
+    width: 300,
+    height: 398, // Portrait aspect ratio 904x1200
     zIndex: 5
   },
   {
     id: 6,
-    src: "/showcase6.jpeg",
-    alt: "Circular wall art",
-    startX: 90,
-    startY: 60,
-    endX: 520,
-    endY: 150,
-    startRotate: 2,
-    endRotate: 4,
-    startScale: 0.88,
-    endScale: 0.95,
-    width: 280,
-    height: 180,
-    zIndex: 2
+    src: "/showcase1.jpeg",
+    alt: "Wooden room decoration",
+    startX: 100,
+    startY: 70,
+    endX: 620,
+    endY: 240,
+    startRotate: 0,
+    endRotate: 0,
+    startScale: 0.85,
+    endScale: 0.92,
+    width: 330,
+    height: 330, // Square aspect ratio 1200x1200
+    zIndex: 3
   }
 ];
 
@@ -213,12 +216,12 @@ export function ShowcaseSection() {
               scale: textScale
             }}
           >
-            <div className="max-w-3xl mx-auto text-center px-4">
+            <div className="max-w-3xl mx-auto text-center px-4 text-4xl">
               <h2
                 style={{
                   fontFamily: "Archivo, sans-serif",
                   fontWeight: 400,
-                  fontSize: "clamp(2rem, 5vw, 3.5rem)",
+                  // fontSize: "clamp(2rem, 5vw, 3.5rem)",
                   lineHeight: 1.3,
                   color: "rgb(141, 73, 58)"
                 }}
