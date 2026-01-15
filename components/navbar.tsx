@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -10,6 +10,19 @@ export function Navbar() {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
+
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileMenuOpen]);
 
   return (
     <>
@@ -19,17 +32,20 @@ export function Navbar() {
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="fixed top-5 left-1/2 -translate-x-1/2 z-[10] w-full px-4"
       >
-        <nav
-          className="relative flex items-center justify-between max-w-[700px] mx-auto p-1.5 rounded-lg"
-          style={{
-            backgroundColor: "rgb(248, 237, 227)",
-            boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 50px 0px"
-          }}
-        >
+        <div className="relative max-w-[700px] mx-auto">
+          <nav
+            className="relative flex items-center justify-between px-4 py-2.5 border-none"
+            style={{
+              backgroundColor: "rgb(248, 237, 227)",
+              borderRadius: mobileMenuOpen ? "5px 5px 0 0" : "5px",
+              border: "none",
+              outline: "none"
+            }}
+          >
           {/* Brand/Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center outline-none">
             <span
-              className="text-xl font-medium tracking-tight"
+              className="text-lg font-medium tracking-tight"
               style={{
                 fontFamily: "Archivo, sans-serif",
                 color: "rgb(141, 73, 58)"
@@ -50,7 +66,7 @@ export function Navbar() {
               >
                 <Link
                   href={`/${item.toLowerCase()}`}
-                  className="text-base no-underline"
+                  className="text-base no-underline outline-none"
                   style={{
                     fontFamily: "Archivo, sans-serif",
                     fontWeight: 600,
@@ -81,22 +97,23 @@ export function Navbar() {
           >
             <Link
               href="/contact"
-              className="flex flex-col items-center justify-center cursor-pointer overflow-hidden text-base no-underline transition-all"
+              className="flex flex-col items-center justify-center cursor-pointer overflow-hidden text-base no-underline outline-none transition-all"
               style={{
                 fontFamily: "Archivo, sans-serif",
                 fontWeight: 600,
                 lineHeight: "1em",
-                padding: "16px 26px",
-                backgroundColor: "var(--button-primary, rgb(64, 58, 52))",
-                color: "#f6f1eb",
+                padding: "10px 20px",
+                backgroundColor: "rgb(141, 73, 58)",
+                color: "rgb(248, 237, 227)",
                 borderRadius: "5px",
+                border: "none",
                 willChange: "transform"
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--button-primary-hover, rgb(54, 48, 42))";
+                e.currentTarget.style.backgroundColor = "rgb(121, 63, 48)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--button-primary, rgb(64, 58, 52))";
+                e.currentTarget.style.backgroundColor = "rgb(141, 73, 58)";
               }}
             >
               Contact us
@@ -106,125 +123,73 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden flex items-center justify-center p-2 rounded-lg transition-colors"
+            className="md:hidden flex items-center justify-center w-8 h-8 transition-colors outline-none border-none"
             aria-label="Toggle menu"
             style={{
-              color: "rgb(64, 58, 52)",
-              backgroundColor: "rgb(64, 58, 52)"
+              backgroundColor: "rgb(141, 73, 58)",
+              borderRadius: "3px",
+              border: "none",
+              outline: "none"
             }}
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="rgb(248, 237, 227)"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
+            <div className="relative w-4 h-3 flex flex-col items-center justify-center">
+              <motion.div
+                className="absolute w-full h-0.5"
+                style={{
+                  backgroundColor: "rgb(248, 237, 227)",
+                  borderRadius: "500px"
+                }}
+                animate={mobileMenuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -4 }}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.div
+                className="absolute w-full h-0.5"
+                style={{
+                  backgroundColor: "rgb(248, 237, 227)",
+                  borderRadius: "500px"
+                }}
+                animate={mobileMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 4 }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
           </button>
         </nav>
-      </motion.header>
 
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[60] md:hidden"
-          >
-            {/* Backdrop */}
+        {/* Mobile Menu Accordion - Attached to Nav */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0"
-              style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-              onClick={toggleMobileMenu}
-            />
-
-            {/* Menu Content */}
-            <motion.div
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="absolute top-5 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] rounded-lg"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="md:hidden overflow-hidden border-none"
               style={{
                 backgroundColor: "rgb(248, 237, 227)",
-                boxShadow: "rgba(0, 0, 0, 0.2) 0px 0px 50px 0px"
+                borderRadius: "0 0 5px 5px",
+                border: "none",
+                outline: "none"
               }}
             >
-              {/* Header with Logo and Close */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-[rgb(141,73,58)]/10">
-                <span
-                  className="text-xl font-medium tracking-tight"
-                  style={{
-                    fontFamily: "Archivo, sans-serif",
-                    color: "rgb(141, 73, 58)"
-                  }}
-                >
-                  Troscán
-                </span>
-
-                <button
-                  onClick={toggleMobileMenu}
-                  className="flex items-center justify-center p-2 rounded-lg transition-colors"
-                  aria-label="Close menu"
-                  style={{
-                    backgroundColor: "rgb(64, 58, 52)"
-                  }}
-                >
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="rgb(248, 237, 227)"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                </button>
-              </div>
-
               {/* Menu Items */}
-              <div className="flex flex-col items-center py-12 px-6 space-y-8">
+              <div className="flex flex-col px-6 py-4 gap-4">
                 {["About", "Projects", "News"].map((item, index) => (
                   <motion.div
                     key={item}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 + index * 0.1, duration: 0.4 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.1 + index * 0.05, duration: 0.3 }}
                   >
                     <Link
                       href={`/${item.toLowerCase()}`}
-                      className="text-xl no-underline"
+                      className="flex items-center justify-center text-base no-underline outline-none transition-colors"
                       style={{
                         fontFamily: "Archivo, sans-serif",
                         fontWeight: 600,
-                        color: "var(--link-text-color, #8d493a)",
-                        textDecoration: "none",
-                        transition: "color 0.4s cubic-bezier(0.44, 0, 0.56, 1)"
+                        color: "rgb(141, 73, 58)",
+                        textDecoration: "none"
                       }}
                       onClick={toggleMobileMenu}
-                      onTouchStart={(e) => {
-                        e.currentTarget.style.color = "var(--link-hover-color, #b85842)";
-                      }}
-                      onTouchEnd={(e) => {
-                        e.currentTarget.style.color = "var(--link-text-color, #8d493a)";
-                      }}
                     >
                       {item}
                     </Link>
@@ -233,23 +198,23 @@ export function Navbar() {
 
                 {/* Contact Button */}
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.4 }}
-                  className="pt-4 relative flex-none h-auto w-auto"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.25, duration: 0.3 }}
+                  className="pt-2 w-full flex justify-center"
                 >
                   <Link
                     href="/contact"
-                    className="flex flex-col items-center justify-center cursor-pointer overflow-hidden w-min h-min text-base no-underline transition-all"
+                    className="flex items-center justify-center cursor-pointer text-base no-underline outline-none transition-all"
                     style={{
                       fontFamily: "Archivo, sans-serif",
                       fontWeight: 600,
                       lineHeight: "1em",
-                      padding: "16px 26px",
-                      backgroundColor: "rgb(64, 58, 52)",
-                      color: "#f6f1eb",
+                      padding: "10px 20px",
+                      backgroundColor: "rgb(141, 73, 58)",
+                      color: "rgb(248, 237, 227)",
                       borderRadius: "5px",
-                      willChange: "transform"
+                      border: "none"
                     }}
                     onClick={toggleMobileMenu}
                   >
@@ -258,7 +223,23 @@ export function Navbar() {
                 </motion.div>
               </div>
             </motion.div>
-          </motion.div>
+          )}
+        </AnimatePresence>
+        </div>
+      </motion.header>
+
+      {/* Backdrop */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[9] md:hidden"
+            style={{ backgroundColor: "rgba(0, 0, 0, 0.3)" }}
+            onClick={toggleMobileMenu}
+          />
         )}
       </AnimatePresence>
     </>
