@@ -53,14 +53,14 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="flex flex-row justify-center items-center gap-[10px] pt-4 w-full"
+            className="flex flex-col md:flex-row justify-center items-center gap-[10px] pt-4 w-full max-w-md mx-auto"
           >
             <motion.a
               href="./about"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="inline-flex items-center justify-center px-[26px] py-4 text-base hover:opacity-90 transition-all cursor-pointer"
+              className="inline-flex items-center justify-center px-[26px] py-4 text-base hover:opacity-90 transition-all cursor-pointer w-full md:w-auto"
               style={{
                 fontFamily: "Archivo, sans-serif",
                 fontWeight: 500,
@@ -69,9 +69,6 @@ export function Hero() {
                 borderRadius: "5px",
                 border: "none",
                 textDecoration: "none",
-                whiteSpace: "pre",
-                width: "min-content",
-                height: "min-content",
               }}
             >
               Our Vision
@@ -82,7 +79,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="inline-flex items-center justify-center px-[26px] py-4 text-base transition-all cursor-pointer"
+              className="inline-flex items-center justify-center px-[26px] py-4 text-base transition-all cursor-pointer w-full md:w-auto"
               style={{
                 fontFamily: "Archivo, sans-serif",
                 fontWeight: 500,
@@ -91,17 +88,16 @@ export function Hero() {
                 borderRadius: "5px",
                 border: "1px solid rgb(248, 237, 227)",
                 textDecoration: "none",
-                whiteSpace: "pre",
-                width: "min-content",
-                height: "min-content",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = "rgb(248, 237, 227)"
                 e.currentTarget.style.color = "rgb(141, 73, 58)"
+                e.currentTarget.style.borderColor = "rgb(248, 237, 227)"
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = "transparent"
                 e.currentTarget.style.color = "rgb(248, 237, 227)"
+                e.currentTarget.style.borderColor = "rgb(248, 237, 227)"
               }}
             >
               Explore Expertise
