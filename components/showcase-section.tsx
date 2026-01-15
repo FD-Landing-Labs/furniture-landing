@@ -288,7 +288,7 @@ export function ShowcaseSection() {
                   color: "rgb(141, 73, 58)"
                 }}
               >
-                Transforming spaces with style, through Troscán's exquisite
+                Transforming spaces with style, through Koala's exquisite
                 design expertise.
               </h2>
             </div>

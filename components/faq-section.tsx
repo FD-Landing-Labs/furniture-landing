@@ -12,19 +12,19 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     id: 1,
-    question: "What is Troscán and how does it work?",
+    question: "What is Koala and how does it work?",
     answer:
-      "Troscán is a premium furniture design and room decorating agency that specializes in creating timeless, luxurious spaces. We work closely with you to understand your vision, then design and craft bespoke furniture pieces and complete room layouts that perfectly match your style and needs.",
+      "Koala is a premium furniture design and room decorating agency that specializes in creating timeless, luxurious spaces. We work closely with you to understand your vision, then design and craft bespoke furniture pieces and complete room layouts that perfectly match your style and needs.",
   },
   {
     id: 2,
-    question: "How can I start a project with Troscán?",
+    question: "How can I start a project with Koala?",
     answer:
-      "Starting a project with Troscán is easy! Simply reach out to us through our contact page or email. We'll schedule an initial consultation to discuss your vision, preferences, and budget. From there, we'll create a tailored design proposal and guide you through every step of the process.",
+      "Starting a project with Koala is easy! Simply reach out to us through our contact page or email. We'll schedule an initial consultation to discuss your vision, preferences, and budget. From there, we'll create a tailored design proposal and guide you through every step of the process.",
   },
   {
     id: 3,
-    question: "What types of projects does Troscán take on?",
+    question: "What types of projects does Koala take on?",
     answer:
       "We handle a wide range of projects including residential spaces (living rooms, bedrooms, dining areas), commercial spaces (offices, restaurants, hotels), and custom furniture pieces. Whether you need a single statement piece or a complete room transformation, we're here to help.",
   },

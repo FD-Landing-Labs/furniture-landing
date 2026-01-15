@@ -18,7 +18,7 @@ const testimonials: Testimonial[] = [
     name: "Sarah Mitchell",
     title: "Homeowner",
     quote:
-      "Troscán completely transformed our living room into a warm, inviting space. Their custom furniture pieces are not only beautiful but incredibly comfortable. We couldn't be happier with the result.",
+      "Koala completely transformed our living room into a warm, inviting space. Their custom furniture pieces are not only beautiful but incredibly comfortable. We couldn't be happier with the result.",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
   },
   {
@@ -26,7 +26,7 @@ const testimonials: Testimonial[] = [
     name: "James Anderson",
     title: "Boutique Hotel Owner",
     quote:
-      "The bespoke furniture and room designs Troscán created for our hotel have elevated our guest experience tremendously. Every piece tells a story and adds character to our spaces.",
+      "The bespoke furniture and room designs Koala created for our hotel have elevated our guest experience tremendously. Every piece tells a story and adds character to our spaces.",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
   },
   {
@@ -34,7 +34,7 @@ const testimonials: Testimonial[] = [
     name: "Emily Chen",
     title: "Interior Designer",
     quote:
-      "Working with Troscán has been a dream. Their attention to detail and understanding of both aesthetics and functionality is exceptional. They bring ideas to life beautifully.",
+      "Working with Koala has been a dream. Their attention to detail and understanding of both aesthetics and functionality is exceptional. They bring ideas to life beautifully.",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
   },
   {
@@ -42,7 +42,7 @@ const testimonials: Testimonial[] = [
     name: "Michael Roberts",
     title: "Restaurant Owner",
     quote:
-      "The dining furniture and ambiance Troscán designed for our restaurant has become the talk of the town. Guests specifically mention how comfortable and stylish the space feels.",
+      "The dining furniture and ambiance Koala designed for our restaurant has become the talk of the town. Guests specifically mention how comfortable and stylish the space feels.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
   },
   {
@@ -50,7 +50,7 @@ const testimonials: Testimonial[] = [
     name: "David Martinez",
     title: "Property Developer",
     quote:
-      "Troscán furnished multiple luxury apartments for our development. Their timeless designs and quality craftsmanship have significantly enhanced the appeal and value of our properties.",
+      "Koala furnished multiple luxury apartments for our development. Their timeless designs and quality craftsmanship have significantly enhanced the appeal and value of our properties.",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
   },
   {
@@ -58,7 +58,7 @@ const testimonials: Testimonial[] = [
     name: "Rachel Thompson",
     title: "Homeowner",
     quote:
-      "From concept to completion, Troscán made our bedroom redesign effortless. The custom headboard and wardrobe are stunning pieces that we'll treasure for years to come.",
+      "From concept to completion, Koala made our bedroom redesign effortless. The custom headboard and wardrobe are stunning pieces that we'll treasure for years to come.",
     image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop",
   },
   {
@@ -66,7 +66,7 @@ const testimonials: Testimonial[] = [
     name: "Thomas Wilson",
     title: "Office Manager",
     quote:
-      "Troscán transformed our corporate office into a modern, productive workspace. The ergonomic furniture and thoughtful layout have improved both aesthetics and employee satisfaction.",
+      "Koala transformed our corporate office into a modern, productive workspace. The ergonomic furniture and thoughtful layout have improved both aesthetics and employee satisfaction.",
     image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop",
   },
   {
@@ -74,7 +74,7 @@ const testimonials: Testimonial[] = [
     name: "Lisa Patterson",
     title: "Café Owner",
     quote:
-      "The cozy, welcoming atmosphere Troscán created with their furniture selection has made our café a favorite neighborhood spot. Their design perfectly captures our brand's essence.",
+      "The cozy, welcoming atmosphere Koala created with their furniture selection has made our café a favorite neighborhood spot. Their design perfectly captures our brand's essence.",
     image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=400&fit=crop",
   },
 ];

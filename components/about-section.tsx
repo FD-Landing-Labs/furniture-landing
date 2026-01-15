@@ -96,7 +96,7 @@ export function AboutSection() {
                 wordWrap: "break-word"
               }}
             >
-              At Troscán, we believe that every space has a story to tell. As a
+              At Koala, we believe that every space has a story to tell. As a
               premier furniture design and room decorating agency.
             </p>
 

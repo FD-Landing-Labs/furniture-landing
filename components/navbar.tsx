@@ -51,7 +51,7 @@ export function Navbar() {
                 color: "rgb(141, 73, 58)"
               }}
             >
-              Troscán
+              Koala
             </span>
           </Link>
 

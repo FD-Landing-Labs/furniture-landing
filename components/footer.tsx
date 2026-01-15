@@ -27,7 +27,7 @@ export function Footer() {
               color: "rgb(248, 237, 227)",
             }}
           >
-            Troscán
+            Koala
           </h2>
         </motion.div>
 

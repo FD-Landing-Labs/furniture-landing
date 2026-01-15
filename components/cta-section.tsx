@@ -60,7 +60,7 @@ export function CTASection() {
                   color: "rgb(141, 73, 58)",
                 }}
               >
-                Ready to reimagine your space? Connect with us at Troscán to bring your vision to life with our expertise in design and decoration.
+                Ready to reimagine your space? Connect with us at Koala to bring your vision to life with our expertise in design and decoration.
               </p>
 
               {/* CTA Button */}
