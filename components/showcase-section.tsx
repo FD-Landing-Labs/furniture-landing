@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 interface ShowcaseCard {
   id: number;
@@ -126,6 +126,35 @@ const showcaseCards: ShowcaseCard[] = [
   }
 ];
 
+// Custom hook for responsive detection
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check on mount
+    checkMobile();
+
+    // Add resize listener with debounce for performance
+    let timeoutId: NodeJS.Timeout;
+    const debouncedCheck = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkMobile, 150);
+    };
+
+    window.addEventListener("resize", debouncedCheck);
+    return () => {
+      window.removeEventListener("resize", debouncedCheck);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  return isMobile;
+}
+
 function AnimatedShowcaseCard({
   card,
   scrollYProgress
@@ -133,8 +162,30 @@ function AnimatedShowcaseCard({
   card: ShowcaseCard;
   scrollYProgress: MotionValue<number>;
 }) {
-  const x = useTransform(scrollYProgress, [0, 0.6], [card.startX, card.endX]);
-  const y = useTransform(scrollYProgress, [0, 0.6], [card.startY, card.endY]);
+  const isMobile = useIsMobile();
+
+  // Mobile vs Desktop multipliers
+  // Mobile: more compact vertical layout with less horizontal spread
+  // Desktop: full spread in all directions
+  const spreadMultiplierX = isMobile ? 0.25 : 1; // Much less horizontal spread on mobile
+  const spreadMultiplierY = isMobile ? 0.7 : 1; // Maintain more vertical spread on mobile
+
+  // Mobile size multipliers based on HTML (35-40% of viewport)
+  // Card 1,5: 35.13%, Card 2,3,4,6: 40%
+  const baseSizeMultiplier = isMobile
+    ? (card.id === 1 || card.id === 5 ? 0.5 : 0.57)
+    : 1;
+
+  const x = useTransform(
+    scrollYProgress,
+    [0, 0.6],
+    [card.startX * spreadMultiplierX, card.endX * spreadMultiplierX]
+  );
+  const y = useTransform(
+    scrollYProgress,
+    [0, 0.6],
+    [card.startY * spreadMultiplierY, card.endY * spreadMultiplierY]
+  );
   const rotate = useTransform(
     scrollYProgress,
     [0, 0.6],
@@ -146,6 +197,10 @@ function AnimatedShowcaseCard({
     [card.startScale, card.endScale]
   );
 
+  // Responsive sizing based on actual mobile HTML
+  const responsiveWidth = card.width * baseSizeMultiplier;
+  const responsiveHeight = card.height * baseSizeMultiplier;
+
   return (
     <motion.div
       className="absolute"
@@ -154,22 +209,28 @@ function AnimatedShowcaseCard({
         y,
         rotate,
         scale,
-        width: card.width,
-        height: card.height,
+        width: responsiveWidth,
+        height: responsiveHeight,
         zIndex: card.zIndex,
         left: "50%",
         top: "50%",
-        marginLeft: -card.width / 2,
-        marginTop: -card.height / 2
+        marginLeft: -responsiveWidth / 2,
+        marginTop: -responsiveHeight / 2
       }}
     >
-      <div className="relative w-full h-full rounded-xl overflow-hidden shadow-2xl">
+      <div className="relative w-full h-full overflow-hidden shadow-lg md:shadow-2xl"
+        style={{
+          borderRadius: isMobile ? "6%" : "12px"
+        }}
+      >
         <Image
           src={card.src}
           alt={card.alt}
           fill
           className="object-cover"
-          sizes="(max-width: 768px) 50vw, 400px"
+          sizes="(max-width: 640px) 40vw, (max-width: 768px) 50vw, 400px"
+          priority={card.zIndex >= 4}
+          quality={85}
         />
       </div>
     </motion.div>
@@ -178,6 +239,8 @@ function AnimatedShowcaseCard({
 
 export function ShowcaseSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -193,13 +256,13 @@ export function ShowcaseSection() {
       className="relative"
       style={{
         backgroundColor: "rgb(235, 225, 215)",
-        height: "200vh" // Extended height for scroll-triggered animation
+        height: isMobile ? "200vh" : "200vh"
       }}
     >
       {/* Sticky container - section stops, only cards move */}
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden touch-pan-y">
         {/* Image Gallery - Burst Effect */}
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full min-h-[600px]">
           {showcaseCards.map((card) => (
             <AnimatedShowcaseCard
               key={card.id}
@@ -210,19 +273,18 @@ export function ShowcaseSection() {
 
           {/* Centered Text - Fades in after images scatter */}
           <motion.div
-            className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none"
+            className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none px-6 md:px-8"
             style={{
               opacity: textOpacity,
               scale: textScale
             }}
           >
-            <div className="max-w-3xl mx-auto text-center px-4 text-4xl">
+            <div className="max-w-4xl mx-auto text-center">
               <h2
+                className="text-[1.75rem] leading-[1.4] sm:text-3xl md:text-4xl lg:text-5xl md:leading-[1.3]"
                 style={{
                   fontFamily: "Archivo, sans-serif",
                   fontWeight: 400,
-                  // fontSize: "clamp(2rem, 5vw, 3.5rem)",
-                  lineHeight: 1.3,
                   color: "rgb(141, 73, 58)"
                 }}
               >
