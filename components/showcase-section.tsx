@@ -282,7 +282,7 @@ export function ShowcaseSection() {
           >
             <div className="max-w-4xl mx-auto text-center">
               <h2
-                className="text-[1.75rem] leading-[1.4] sm:text-3xl md:text-4xl lg:text-5xl md:leading-[1.3]"
+                className="text-[1.75rem] leading-[1.4] sm:text-3xl md:text-4xl md:leading-[1.3]"
                 style={{
                   fontFamily: siteConfig.fonts.primary,
                   fontWeight: 400,
